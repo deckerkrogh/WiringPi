@@ -265,7 +265,7 @@ static int doExtensionMcp23017 (char *progName, int pinBase, char *params)
     return FALSE ;
   }
 
-  mcp23017Setup (pinBase, i2c) ;
+  mcp23017Setup (pinBase, i2c, NULL) ;  //Just hardcoding a NULL so it compiles
 
   return TRUE ;
 }

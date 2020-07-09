@@ -33,6 +33,7 @@
 
 #include "htu21d.h"
 
+#define I2C_BUS NULL
 #define	DEBUG
 #undef	FAKE_SENSOR
 
@@ -126,7 +127,7 @@ int htu21dSetup (const int pinBase)
   uint8_t data ;
   int status ;
 
-  if ((fd = wiringPiI2CSetup (I2C_ADDRESS)) < 0)
+  if ((fd = wiringPiI2CSetup (I2C_ADDRESS, I2C_BUS)) < 0)
     return FALSE ;
 
   node = wiringPiNewNode (pinBase, 2) ;

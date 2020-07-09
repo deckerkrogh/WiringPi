@@ -26,7 +26,7 @@
 extern "C" {
 #endif
 
-extern int mcp23017Setup (const int pinBase, const int i2cAddress) ;
+extern int mcp23017Setup (const int pinBase, const int i2cAddress, const char* i2cBus) ;
 
 #ifdef __cplusplus
 }

@@ -36,6 +36,7 @@
 
 #include "mcp3422.h"
 
+#define I2C_BUS NULL
 
 /*
  * waitForConversion:
@@ -111,7 +112,7 @@ int mcp3422Setup (int pinBase, int i2cAddress, int sampleRate, int gain)
   int fd ;
   struct wiringPiNodeStruct *node ;
 
-  if ((fd = wiringPiI2CSetup (i2cAddress)) < 0)
+  if ((fd = wiringPiI2CSetup (i2cAddress,I2C_BUS)) < 0)
     return FALSE ;
 
   node = wiringPiNewNode (pinBase, 4) ;

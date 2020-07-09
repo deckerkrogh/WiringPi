@@ -30,6 +30,7 @@
 
 #include "pcf8574.h"
 
+#define I2C_BUS NULL
 
 /*
  * myPinMode:
@@ -111,7 +112,7 @@ int pcf8574Setup (const int pinBase, const int i2cAddress)
   int fd ;
   struct wiringPiNodeStruct *node ;
 
-  if ((fd = wiringPiI2CSetup (i2cAddress)) < 0)
+  if ((fd = wiringPiI2CSetup (i2cAddress, I2C_BUS)) < 0)
     return FALSE ;
 
   node = wiringPiNewNode (pinBase, 8) ;

@@ -41,6 +41,7 @@
 #undef	DEBUG
 
 #define	I2C_ADDRESS	0x77
+#define I2C_BUS NULL
 #define	BMP180_OSS	   0
 
 
@@ -191,7 +192,7 @@ int bmp180Setup (const int pinBase)
   int fd ;
   struct wiringPiNodeStruct *node ;
 
-  if ((fd = wiringPiI2CSetup (I2C_ADDRESS)) < 0)
+  if ((fd = wiringPiI2CSetup (I2C_ADDRESS, I2C_BUS)) < 0)
     return FALSE ;
 
   node = wiringPiNewNode (pinBase, 4) ;

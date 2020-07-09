@@ -41,6 +41,8 @@
 
 #include "ads1115.h"
 
+#define I2C_BUS NULL
+
 // Bits in the config register (it's a 16-bit register)
 
 #define	CONFIG_OS_MASK		(0x8000)	// Operational Status Register
@@ -277,7 +279,7 @@ int ads1115Setup (const int pinBase, int i2cAddr)
   struct wiringPiNodeStruct *node ;
   int fd ;
 
-  if ((fd = wiringPiI2CSetup (i2cAddr)) < 0)
+  if ((fd = wiringPiI2CSetup (i2cAddr, I2C_BUS)) < 0)
     return FALSE ;
 
   node = wiringPiNewNode (pinBase, 8) ;
