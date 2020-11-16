@@ -30,8 +30,6 @@
 
 #include "pcf8591.h"
 
-#define I2C_BUS NULL
-
 
 /*
  * myAnalogWrite:
@@ -74,12 +72,12 @@ static int myAnalogRead (struct wiringPiNodeStruct *node, int pin)
  *********************************************************************************
  */
 
-int pcf8591Setup (const int pinBase, const int i2cAddress)
+int pcf8591Setup (const int pinBase, const int i2cAddress, const char* i2cBus)
 {
   int fd ;
   struct wiringPiNodeStruct *node ;
 
-  if ((fd = wiringPiI2CSetup (i2cAddress, I2C_BUS)) < 0)
+  if ((fd = wiringPiI2CSetup (i2cAddress, i2cBus)) < 0)
     return FALSE ;
 
   node = wiringPiNewNode (pinBase, 4) ;
